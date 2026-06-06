@@ -12,7 +12,44 @@ Core shell configurations and interactive workspace orchestration layers for Cod
 
 To pull these components directly into your application environment, follow these steps inside the Termux terminal wrapper:
 
-### Register Core Shell Rules
+### 1. Register Core Shell Rules
 Download and overwrite your terminal's main initialization file:
 ```bash
 curl -fsSL [https://raw.githubusercontent.com/codestudiomobile/termux-shell-presets/main/bash.bashrc](https://raw.githubusercontent.com/codestudiomobile/termux-shell-presets/main/bash.bashrc) -o $PREFIX/etc/bash.bashrc
+
+```
+
+### 2. Add System Command Shortcuts
+
+Download the terminal environment restarter tool directly into your execution folder and mark it executable:
+
+```bash
+curl -fsSL [https://raw.githubusercontent.com/codestudiomobile/termux-shell-presets/main/restart-terminal.sh](https://raw.githubusercontent.com/codestudiomobile/termux-shell-presets/main/restart-terminal.sh) -o $PREFIX/bin/restart-terminal
+chmod +x $PREFIX/bin/restart-terminal
+
+```
+
+---
+
+## 💡 How to Use
+
+### 📁 Dynamic IDE Project Mapping
+
+When launching a workspace project inside CodeStudio, declare the `OPENED_FOLDER` environment variable. The core profile automatically translates complex, restrictive Android system storage layouts into cleaner virtual shortcuts:
+
+```bash
+export OPENED_FOLDER="/storage/emulated/0/MyProject"
+source $PREFIX/etc/bash.bashrc
+
+```
+
+### 🔄 Instant Shell Environments Reboot
+
+If environment variables change or configuration adjustments lock your workflow sessions, reload the layout seamlessly using:
+
+```bash
+restart-terminal
+
+```
+
+```
